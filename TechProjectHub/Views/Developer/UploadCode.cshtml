@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "UploadCode";
+    Layout = "~/Views/Shared/Common_Developer_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 pt-3 mt-5 mb-5 pb-5 bg-light upsection">
+        <h3 class="text-success text-center mb-4">Upload Project Code</h3>
+        <h5 class="text-info text-center">@ViewBag.message</h5>
+        <form action="/Developer/UploadCode" method="post" enctype="multipart/form-data">
+            <label for="ProjectTitle" class="col-form-label">Title of Project<spna class="text-danger">*</spna></label>
+            <input class="form-control mb-2" type="text" required name="Upload_Title" placeholder="Title of project" />
+            <label for="ProjectDesc" class="col-form-label">Description about project<spna class="text-danger">*</spna></label>
+            <textarea class="form-control mb-2" name="Code_Descrip" required placeholder="Description of code...."></textarea>
+            <label for="CodeFile" class="col-form-label">Upload Code File<spna class="text-danger">*</spna></label>
+            <input type="file" class="form-control mb-3" name="CodeFile_Name" required/>
+            <input type="submit" name="" class="btn btn-primary mt-3" />
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>

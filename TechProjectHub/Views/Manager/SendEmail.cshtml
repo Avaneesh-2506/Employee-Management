@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "SendEmail";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 mt-4 mb-4" style="border:2px solid black;">
+        <h1 class="card-header h2 text-primary text-center mt-2">Send Email to Developer</h1>
+        <p class="text-center text-primary">@ViewBag.SendMail</p>
+        <form action="/Manager/SendEmail" method="post">
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email<spna class="text-danger">*</spna></label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter email id" name="SendTo" required>
+            </div>
+            <div class="mb-3">
+                <label for="Subject" class="form-label">Subject<spna class="text-danger">*</spna></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write sebject of email" name="Subject" required>
+            </div>
+            <div class="mb-3">
+                <label for="EmailMessage" class="form-label">Message<spna class="text-danger">*</spna></label>
+                <textarea class="form-control" name="Message" rows="3" placeholder="Write message here...."required></textarea>
+            </div>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-6">
+                    <input type="submit" value="Send Email" class="btn btn-success mt-2 mb-2" style="width:50%"required />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "TdProject";
+    Layout = "~/Views/Shared/Common_General_Layout.cshtml";
+}
+
+@using TechProjectHub.Models
+@model IEnumerable<ProjectMaster>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <h1 class="text-center text-primary mt-3 pb-3 ">Trending Project</h1>
+        <div class="row">
+            @{
+                foreach (ProjectMaster pm in Model)
+                {
+
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <h5 class="card-header">Project Title: @pm.Project_Title</h5>
+                                <div class="card-body" >
+                                    <h5 class="card-title">Project Description: </h5><span>@pm.Description</span><br/>
+                                    <p class="card-text"><span class="text-danger"><b>Deadline:</b></span>@pm.Deadline</p>
+                                    <p class="card-text"><span class="text-primary"><b>Posted On:</b> </span>@pm.Project_DT</p>
+                                </div>
+                            </div><br />
+                        </div>
+                }
+            }
+
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+

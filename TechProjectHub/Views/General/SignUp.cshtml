@@ -1,0 +1,248 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/Common_General_Layout.cshtml";
+}
+<style>
+    .myform div{
+        margin-top:10px;
+        margin-bottom:10px
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("#BtnRefresh").click(function () {
+            $.getJSON("/General/GetNewCaptchaByAJAX", null, function (res) {
+                $("#ImgCaptcha").attr("src", "/content/Captcha/" + res);
+
+            });
+        });
+        //Validation terms&conditions
+        $("#chkterms").change(function () {
+            var x = $(this).prop("checked");
+            if (x == true)
+                $("#btnsignup").prop("disabled", false);
+            else
+                $("#btnsignup").prop("disabled", true);
+        });
+        //Validate signup form
+        $("#btnsignup").click(function () {
+            var name, email, mob, pass, cpass, quali, desig,code, picture, address, res = true;
+            //reading values of all controls....
+            name=$("#tname").val().trim();
+            email=$("#temail").val().trim();
+            mob=$("#tmobno").val().trim();
+            quali=$("#dquali").val().trim();
+            desig=$("#ddesig").val().trim();
+            pass=$("#tpass").val().trim();
+            cpass=$("#tcpass").val().trim();
+            code=$("#tcaptcha").val().trim();
+            picture=$("#pic").val().trim();
+            address = $("#taddress").val().trim();
+            //clear old error
+            $(".err").remove();
+            //validate name
+            if (name.length == 0) {
+                $("#tname").after("<span class='err'>Please enter your name</span>")
+                res = false;
+            }
+            else if (name.length < 3) {
+                $("#tname").after("<span class='err'>Enter a valid name</span>")
+                res = false;
+            }
+            else if (name.indexOf(' ') < 0) {
+                $("#tname").after("<span class='err'>Please enter full name</span>")
+                res = false;
+            }
+            //validate emailid
+            if (email.length == 0) {
+                $("#temail").after("<span class='err'>Please enter your email id</span>");
+                res = false;
+            }
+            //validate mobile no
+            if (mob.length == 0) {
+                $("#tmobno").after("<span class='err'>Please enter mobile no</span>");
+                res = false;
+            }
+            else if (mob.length != 10) {
+                $("#tmobno").after("<span class='err'>Mobile number must have exact 10 digits</span>");
+                res = false;
+            }
+            else {
+                var ascii = mob.charCodeAt(0);
+                if (!(ascii >= 54 && ascii <= 57))
+                {
+                    $("#tmobno").after("<span class='err'>Please enter a valid mobile no</span>");
+                    res = false;
+                }
+            }
+            //validate qualification
+            if (quali.length == 0) {
+                $("#dquali").after("<span class='err'>Please choose qualification</span>");
+                res = false;
+            }
+            //validate designation
+            if (desig.length == 0) {
+                $("#ddesig").after("<span class='err'>Please choose designation</span>");
+                res = false;
+            }
+            //validate address
+            if (address.length == 0) {
+                $("#taddress").after("<span class='err'>Please enter your address</span>")
+                res = false;
+            }
+            else {
+                var count=0, x, ch;
+                for (x = 0; x < address.length; x++)
+                {
+                    ch = address.charAt(x);
+                    if (ch == ' ' || ch == ',' || ch == '.' || ch == '-')
+                    count++
+                }
+                if (count < 3) {
+                    $("#taddress").after("<span class='err'>Please enter your full address.</span>")
+                    res = false;
+                }
+            }
+            //validate picture
+            if (picture.length == 0) {
+                var ext=picture.substring(picture.lastIndexOf('.')).toUpperCase();
+                if (!(ext == ".JPG" || ext == ".JPEG" || ext == ".PNG"))
+                {
+                    $("#pic").after("<span class='err'>Please choose a valid image</span>");
+                    res = false;
+                }
+            }
+            //validate password
+            if (pass.length == 0) {
+                $("#tpass").after("<span class='err'>Please enter your password</span>");
+                res = false;
+            }
+            else if (pass.length < 5) {
+                $("#tpass").after("<span class='err'>Password must have 5 characters</span");
+                res = false;
+            }
+            //validate confirm password
+            if (cpass.length == 0) {
+                $("#tcpass").after("<span class='err'>please enter confirm password</span>");
+                res = false;
+            }
+            else if (pass != cpass) {
+                $("#tcpass").after("<span class='err'>Password and confirm password must be same.</span>");
+                res = false;
+            }
+            //validate captcha box
+            if (code.length == 0) {
+                $("#tcaptcha").after("<span class='err'>Please enter captcha code</span>")
+                res = false;
+            }
+            return res;
+        });
+    });
+</script>
+<style>
+    .err{
+        color:red;
+    }
+    #btnsup a {
+        text-decoration: none;
+        color: white;
+    }
+
+        #btnsup a:hover {
+            color: black;
+        }
+        #btnsup{
+            padding:10px;
+            width:20%;
+        }
+        #btnsup{
+            color:black;
+        }
+</style>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+        <p class="text-center h5 text-danger">@ViewBag.Message</p>
+        <form action="/General/SignUp" method="post" enctype="multipart/form-data">
+            <div class="row myform" min-height:400px;padding-top:20px; padding-bottom:20px; margin-top:10px;margin-bottom:15px">
+                <h3 class="text-center text-primary mt-4">Create an Account</h3>
+                <p>All fields are mandatory to fill.<spna class="text-danger">*</spna></p>
+                <hr />
+                <div class="col-sm-6 ">
+
+                    <input type="text" id="tname" name="Name" placeholder="Full Name" class="form-control" />
+                </div>
+                <div class="col-sm-6">
+                    <input type="email" id="temail" name="Email_Id" placeholder="EmailId" class="form-control" />
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" id="tmobno" name="Mobile_No" placeholder="Mobile No" class="form-control" />
+                </div>
+                <div class="col-sm-6">
+                    @Html.DropDownList("Qualification", null, "Qualifiacation", new { @class = "form-control", id = "dquali" })
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-control tex-center">
+                        Male <input type="radio" name="Gender" value="Male" checked="checked" />
+                        Female <input type="radio" name="Gender" value="Female" />
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    @Html.DropDownList("Designation", null, "Designation", new { @class = "form-control", id = "ddesig" })
+                </div>
+                <div class="col-sm-6">
+                    <textarea class="form-control" id="taddress" name="Address" placeholder="Enter your address" rows="2"></textarea>
+                </div>
+                <div class="col-sm-6">
+                    <span class="form-control">
+                        Picture:
+                        <input type="file" id="pic" name="ProfilePic" />
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <input type="password" id="tpass" name="Pass" placeholder="Password" class="form-control" />
+                </div>
+                <div class="col-sm-6">
+                    <input type="password" id="tcpass" name="CnfPass" placeholder="Confirm Password" class="form-control" />
+                </div>
+
+                <div class="col-sm-6">
+                    <span class="form-control" style="min-height:50px;min-width:30%">
+                        <img id="ImgCaptcha" width="80%" height="40px" src="~/Content/Captcha/@ViewBag.CaptchaPicName" />
+                        <img src="~/Content/Images/refresh.png" id="BtnRefresh" width="10%" height="40px" style="cursor:pointer;" title="Refresh" />
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" id="tcaptcha" name="TxtCaptcha" placeholder="Type Captcha" class="form-control" />
+                </div>
+                <div class="col-sm-12">
+                    <input type="checkbox" style="height:20px;width:20px" id="chkterms" /> Check here to indicate that you have to agree to the terms and conditions of <b>Tech Project Hub</b>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3">
+                    <input type="submit" value="Sign up" id="btnsignup" class="btn btn-primary" disabled="true" />
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3">
+                    <input type="reset" value="Reset" class="btn btn-danger" />
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5 mb-1 pt-5 greet">
+        <div class="text-center mt-5">
+            <img height="120px" width="50%" src="~/Content/Images/lg.gif"> </img>
+        </div>
+        <h3 class="text-center mt-2 text-light">Welcome!</h3>
+        <p class="text-center text-light" style="font-size:18px">We're thrilled to have you as part of our online <br />community. Your presence here is valued, and we're<br /> looking forward to getting to know you better..</p>
+        <p class="text-center text-light" style="font-size:15px">Already have an account?</p>
+        <p class=" text-center">
+            <button type="button" id="btnsup" class="btn btn-outline-light text-center"><a href="/General/Login">Login</a></button>
+        </p>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "WorkRequest";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+@using TechProjectHub.Models
+@model IEnumerable<RequestMaster>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 pt-5 pb-5 mt-5 mb-5 bg-light" style="border-radius:15px">
+        <h3 class="text-center text-primary">Request from Developers</h3>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Request Id</th>
+                <th>Request For</th>
+                <th>Request Message</th>
+                <th>Requested By</th>
+                <th>Request Date</th>
+                @{
+                    foreach(RequestMaster rm in Model)
+                    {
+                    <tr>
+                        <td>@rm.Request_Id</td>
+                        <td>@rm.Request_For</td>
+                        <td>@rm.Request_Msg</td>
+                        <td>@rm.DeveloperMaster.Email_Id</td>
+                        <td>@rm.Request_DT</td>
+                    </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+

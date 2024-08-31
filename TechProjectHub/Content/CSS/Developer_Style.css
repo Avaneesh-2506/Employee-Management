@@ -1,0 +1,30 @@
+﻿.header {
+    background: rgb(0,23,36);
+    background: linear-gradient(90deg, rgba(0,23,36,1) 0%, rgba(9,94,121,1) 60%, rgba(0,206,255,1) 100%);
+}
+.bg{
+    color:white;
+    font-family:'Felix Titling';
+    font-weight:bold;
+    letter-spacing:2px;
+}
+.main {
+    min-height: 600px;
+    background:#9FB6E5;
+}
+.footer{
+    background:black;
+    color:white;
+}
+.navbar{
+    background:#090909;
+}
+.menu1{
+    transition:0.5s all ease-in-out;
+}
+.menu1:hover{
+    box-shadow:5px 7px 10px #313131;
+}
+.upsection{
+    border-radius:10px;
+}

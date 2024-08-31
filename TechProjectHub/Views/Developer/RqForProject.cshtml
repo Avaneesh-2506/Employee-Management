@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "RqForProject";
+    Layout = "~/Views/Shared/Common_Developer_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 pt-3 mt-5 mb-5 pb-5 bg-light upsection">
+        <h3 class="text-success text-center mb-4">Request for Project</h3>
+        <h5 class="text-info text-center">@ViewBag.RqProject</h5>
+        <br />
+        <form action="/Developer/RqForProject" method="post">
+            <input type="hidden" name="Request_For" value="@Request["id"]" />
+            <label for="RequestDesc" class="form-label">Request Description<spna class="text-danger">*</spna></label>
+            <textarea class="form-control mb-4" name="Request_Msg" placeholder="Say something about requested project........"required></textarea>
+            <input type="submit" value="Send Request" class="btn btn-primary mt-2" />
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+

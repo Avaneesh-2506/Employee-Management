@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0f7da5ee784b4ced9bb1fb7a70f2ca54" Name="Diagram1">
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.DeveloperMaster" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.EnquiryMaster" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.FeedbackMaster" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.LoginMaster" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.NotificationMaster" Width="1.5" PointX="5.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.PostProjectMaster" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.ProjectMaster" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.RequestMaster" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.TaskMaster" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.UploadCodeMaster" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tech_Project_HubDBModel.WorkReportMaster" Width="1.5" PointX="3" PointY="16.625" IsExpanded="true" />
+        <AssociationConnector Association="Tech_Project_HubDBModel.FK_FeedbackMaster_DeveloperMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="Tech_Project_HubDBModel.FK_RequestMaster_DeveloperMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="Tech_Project_HubDBModel.FK_TaskMaster_DeveloperMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="Tech_Project_HubDBModel.FK_UploadCodeMaster_DeveloperMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="Tech_Project_HubDBModel.FK_WorkReportMaster_DeveloperMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="Tech_Project_HubDBModel.FK_RequestMaster_ProjectMaster" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

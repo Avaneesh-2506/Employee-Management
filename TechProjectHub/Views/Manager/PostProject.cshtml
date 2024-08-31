@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "PostProject";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+<style>
+    .bgpost{
+        background:#ffffff87;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 pt-3 mt-5 mb-5 pb-5 bgpost upsection">
+        <h3 class="text-success text-center mb-4">Post Project</h3>
+        <h5 class="text-info text-center">@ViewBag.Project</h5>
+        <form action="/Manager/PostProject" method="post" enctype="multipart/form-data">
+            <label for="ProjectTitle" class="col-form-label">Project Title<spna class="text-danger">*</spna></label>
+            <input class="form-control mb-2" type="text" name="Project_Title" placeholder="Title of project" required/>
+            <label for="ProjectDeadline" class="col-form-label">Deadline of Project<spna class="text-danger">*</spna></label>
+            <input class="form-control mb-2" type="date" name="Deadline" required/>
+            <label for="ProjectDescrip" class="col-form-label">Project Description<spna class="text-danger">*</spna></label>
+            <textarea class="form-control mb-2" name="Description" placeholder="Description of Project..." required></textarea>
+            <label for="ProjectFile" class="col-form-label">Upload Project File<spna class="text-danger">*</spna></label>
+            <input type="file" class="form-control mb-3" name="Project_File" required />
+            <input type="submit" name="" class="btn btn-primary mt-3"required />
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+

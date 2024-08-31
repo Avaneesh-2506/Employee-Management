@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/Common_Developer_Layout.cshtml";
+}
+@using TechProjectHub.Models
+@model DeveloperMaster
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 bg-light mt-5 mb-5">
+        <h1 class="text-center text-success card-header mt-1 mb-2">My Profile</h1>
+        <h4 class="text-danger">@ViewBag.message</h4>
+        <form action="/Developer/MyProfile" method="post" enctype="multipart/form-data">
+            <div class="row ">
+                <div class="col-sm-7">
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Email:</label>
+                        <div class="col-sm-9">
+                            <input type="email" readonly class="form-control-plaintext" id="staticEmail" value="@Model.Email_Id">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="Name" class="col-sm-3 col-form-label">Name:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputName" value="@Model.Name" name="Name">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="MobNo" class="col-sm-3 col-form-label">Mobile No:</label>
+                        <div class="col-sm-9">
+                            <input type="number" class="form-control" id="inputMobNo" value="@Model.Mobile_No" name="Mobile_No">
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Qualification" class="col-sm-3 col-form-label">Qualification:</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownList("Qualification", null, "Qualification", new {@class="form-control"})
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="Gender" class="col-sm-3 col-form-label">Gender:</label>
+                        <div class="col-sm-9">
+                            <span class="form-control" style="background:transparent;border:0px">
+                                @if (Model.Gender == "MALE")
+                                {
+                                    <input type = "radio" id = "inputGender" name = "Gender" checked value="Male"><span>Male &nbsp;</span>
+                                    <input type = "radio" id = "inputGender" name = "Gender" value="Female" ><span>Female </span>
+                                 }
+                                    else
+                                    {
+                                    <input type = "radio" id = "inputGender" name = "Gender" value="Male"><span> Male &nbsp;</span>
+                                    <input type = "radio" id = "inputGender" name = "Gender" checked value="Female"><span>Female </span>
+                                    }
+
+                                </span>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="Designation" class="col-sm-3 col-form-label">Designation:</label>
+                        <div class="col-sm-9">
+                            @Html.DropDownList("Designation", null, "Designation", new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="mb-3 row">
+                        <label for="Address" class="col-sm-3 col-form-label">Address:</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" name="Address" rows="3">@Model.Address</textarea>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Update Profile" class="btn btn-outline-primary mb-3" />
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3 text-center">
+                    <img src="/Content/UserPics/@Model.ProfilePic" class="mt-4" style="min-height:150px;width:70%" />
+                    <input type="file" class="form-control text-center mt-1" name="ProfilePic" />
+                </div>
+
+                <div class="col-sm-1"></div>
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+

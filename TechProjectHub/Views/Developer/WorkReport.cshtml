@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "WorkReport";
+    Layout = "~/Views/Shared/Common_Developer_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 pt-3 mt-5 mb-5 pb-5 bg-light upsection">
+        <h3 class="text-success text-center mb-4">Work Report</h3>
+        <h5 class="text-info text-center">@ViewBag.Message</h5>
+        <form action="/Developer/WorkReport" method="post" enctype="multipart/form-data">
+            <label for="ReportTitle" class="col-form-label">Report Title<spna class="text-danger">*</spna></label>
+            <input class="form-control mb-2" type="text" name="Report_Title" required placeholder="Title of Work/Project" />
+            <label for="ReportDesc" class="col-form-label">Description of report<spna class="text-danger">*</spna></label>
+            <textarea class="form-control mb-2" name="Report_Descrip" required placeholder="Description of report...."></textarea>
+            <label for="WorkDate" class="col-form-label">Work Date<spna class="text-danger">*</spna></label>
+            <input type="date" class="form-control mb-2"required name="WorkDate" />
+            <input type="checkbox" value="true" name="IsHelpNeeded" /> Is any help needed?(Optional)<br />
+            <input type="submit" name="" class="btn btn-primary mt-3" />
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+

@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "TodayTask";
+    Layout = "~/Views/Shared/Common_Developer_Layout.cshtml";
+}
+
+@using TechProjectHub.Models
+@model IEnumerable<TaskMaster>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 pt-5 pb-5 mt-5 mb-5 bg-light" style="border-radius:15px">
+        <h3 class="text-center text-dark" style="font-family:sans-serif;font-weight:bold">Today Task</h3>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>S No.</th>
+                <th>Task Title</th>
+                <th>Task Date</th>
+                <th>Task Description</th>
+                <th>Uploaded On</th>
+                <th>Task File</th>
+                <th class="text-center">Download Task</th>
+                @{
+                    int sno = 1;
+                    foreach (TaskMaster tm in Model)
+                    {
+                    <tr>
+                        <td>@sno</td>
+                        <td>@tm.TaskTitle</td>
+                        <td>@tm.ForDate</td>
+                        <td>@tm.TaskDescription</td>
+                        <td>@tm.UploadedOn</td>
+                        <td>@tm.TaskFile</td>
+                        <td class="text-center">
+                            <a href="/Developer/DownloadTask?fname=@tm.TaskFile">
+                                <span><i class="fa fa-file fa-download " title="Download"></i></span>
+                            </a>
+                        </td>
+                    </tr>
+                    sno++;
+                }
+
+                }
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+

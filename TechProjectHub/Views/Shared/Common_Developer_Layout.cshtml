@@ -1,0 +1,113 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Developer Zone</title>
+    <link href="~/Content/CSS/Developer_Style.css" rel="stylesheet" />
+    <link href="~/Content/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/Bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="~/Content/JS/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .nav-link{
+            color:#ffffff;
+        }
+        .nav-link:hover{
+            color:#ff6a00;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+        <div class="container-fluid">
+            <div class="row header">
+                <div class="col-sm-2 logo p-0 m-0 text-center">
+                <img src="~/Content/Images/Project png.png" style="height:80px;width:70%" />
+                </div>
+                <div class="col-sm-7">
+                    <h1 class="card-header text-light text-center mt-3 bg ">Welcome To Developer Zone</h1>
+                </div>
+                <div class="col-sm-1 mt-3 text-light" style="padding:5px">Hii, @ViewBag.Name</div>
+                <div class="col-sm-2 p-0 m-0">
+                    <img src="@ViewBag.Picture" class="text-center" style="height:90px;width:50% ; border-radius:50%"/>
+                </div>
+            </div>
+            <div class="row menu ">
+
+                <div class="col-sm-1" style="background: #090909"></div>
+                <div class="col-sm-10 p-0 m-0">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="container-fluid">
+
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                <ul class="navbar-nav navbar-danger">
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Dashboard", "Welcome", "Developer", new { @class = "nav-link "})
+                                    </li>&emsp;
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Search Projects", "SearchP", "Developer", new { @class = "nav-link " })
+                                    </li>&emsp;
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("My Projects", "MyProjects", "Developer", new { @class = "nav-link "})
+                                    </li>&emsp;
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Todays Task", "TodayTask", "Developer", new { @class = "nav-link "})
+                                    </li>&emsp;
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Upload Code", "UploadCode", "Developer", new { @class = "nav-link "})
+                                    </li>&emsp;
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Work Report", "WorkReport", "Developer", new { @class = "nav-link " })
+                                    </li>&emsp;
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Feedback", "Feedback", "Developer", new { @class = "nav-link " })
+                                    </li>&emsp;
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" style="color:white" role="button" data-bs-toggle="dropdown">Settings</a>
+                                        <ul class="dropdown-menu" >
+                                            <li> @Html.ActionLink("My Profile", "MyProfile", "Developer", new { @class = "dropdown-item", style = "color:black;" })</li>
+                                            <li> @Html.ActionLink("Change Password", "ChangePass", "Developer", new { @class = "dropdown-item", style = "color:black;" })</li>
+                                            <li> @Html.ActionLink("Logout", "Logout", "Developer", new { @class = "dropdown-item", style = "color:black;" })</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-sm-1" style="background: #090909"></div>
+
+            </div>
+            <div class="row main">
+                <div class="col-sm-12">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="row footer text-center">
+                <div class="col-sm-6">CopyRight &copy; to Tech Porject Hub</div>
+                <div class="col-sm-6">Designed & Developed By: Technical Team of TechProjectHub</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

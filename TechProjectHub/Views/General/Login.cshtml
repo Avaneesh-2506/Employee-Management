@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Common_General_Layout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $("#btnlogin").click(function () {
+            var email, pass, type, res= true;
+            email = $("#temail").val().trim();
+            pass = $("#tpass").val().trim();
+            type = $("#utype").val().trim();
+            //Clear all old errors
+            $(".err").remove();
+           //validate email id/userid
+            if (email.length == 0)
+            {
+                $("#temail").after("<p class='err'>Please enter your email id.</p>");
+                res = false;
+            }
+            //validate paswsord
+            if (pass.length == 0)
+            {
+                $("#tpass").after("<p class='err'>Please enter your password</p>");
+                res = false;
+            }
+            //validate usertype
+            if (type.length == 0)
+            {
+                $("#utype").after("<p class='err'>Please select user type</p>");
+                res = false;
+            }
+            return res;
+        });
+    });
+</script>
+<style>
+    .err{
+        color:red;
+        display:block;
+    }
+    .btn a{
+        text-decoration:none;
+        color:white;
+    }
+    .btn a:hover{
+        color:black;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-5 mb-1 greet">
+        <div class="text-center mt-5">
+            <img height="120px" width="50%" src="~/Content/Images/lg.gif"> </img>
+        </div>
+        <h3 class="text-center mt-2 text-light">Welcome Back!</h3>
+        <p class="text-center text-light" style="font-size:18px">Welcome back to the best. We're <br />always here, waiting for you.</p>
+        <p class="text-center text-light" style="font-size:15px">Not have an account?</p>
+        <p class=" text-center">
+        <button type="button" class="btn btn-outline-light text-center"><a href="/General/SignUp">Sign Up</a></button>
+        </p>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3 login">
+        <form action="/General/Login" method="post">
+            <h2 class="logac text-center mb-5">Login to Account</h2>
+            <div class="input-group mb-3" >
+                <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-envelope"></i></span>
+                <input type="email" id="temail" name="Email_Id" style="display:block;" class="form-control txt" placeholder="Enter Email Id" aria-describedby="basic-addon1" /><br />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <input type="password" id="tpass" name="Pass" class="form-control txt" placeholder="Enter your password" /><br />
+            </div>
+            <div class="input-group mb-1">
+                <label class="input-group-text" for="inputGroupSelect01">User Type</label>
+                <select name="Utype" class="form-control txt" id="utype">
+                    <option value="">Choose...</option>
+                    <option value="DEVELOPER">Developer</option>
+                    <option value="MANAGER">Manager</option>
+                </select>
+            </div>
+            <br />
+            <p class="text-center text-danger h5">@ViewBag.Message</p>
+            <input type="submit" value="Login" id="btnlogin" class="form-control txt1 text-center" />
+            <input type="reset" id="txt2" value="Clear" class="form-control txt1 text-center" />
+        </form>
+    </div>
+    <div class="col-sm-2"></div>
+</div>

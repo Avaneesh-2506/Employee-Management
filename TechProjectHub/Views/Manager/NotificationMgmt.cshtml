@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "NotificationMgmt";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+@using TechProjectHub.Models
+@model IEnumerable<NotificationMaster>
+
+<script>
+    $(document).ready(function () {
+        $(".del").click(function () {
+            var r = $(this).parents("tr");
+            var nid = r.find("td").first().text().trim();
+            var obj = { NID: nid };
+            //AJAX Calling
+            $.getJSON("/Manager/DeleteNotify", obj, function (res) {
+                if (res == "SUCCESS") {
+                    alert("Notification deleted successfully");
+                    r.slideUp(1200);
+                }
+                else {
+                    alert("Sorry! Unable to delete notification");
+                }
+            });
+        });
+    });
+
+</script>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 pt-3 mt-5 mb-5 pb-5 bg-light upsection">
+        <h3 class="text-success text-center mb-4">Notification
+        <span class="fa-solid fa-bell" style="color:black"></span>
+        </h3>
+        <h2 class="text-danger h5 text-center">@ViewBag.notify</h2>
+        <!-- <p class="text-center text-primary>p>-->
+        <form action="/Manager/NotificationMgmt" method="post">
+            <div class="mb-3">
+                <label for="NotoficationMessage" class="form-label h5">Notiication<spna class="text-danger">*</spna></label>
+                <textarea class="form-control" name="NMsg" rows="3" placeholder="What's the new notification..." required></textarea>
+            </div>
+
+            <input type="submit" class="btn btn-success mt-2 mb-2" value="Save" />
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+<!--Display Notifcation-->
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-12 pt-5 pb-5 mt-5 mb-5 bg-light" style="border-radius:15px">
+        <h3 class="text-center text-primary mb-1">Manage Notification</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Notification Id</th>
+                <th>Notification Message</th>
+                <th>Notification Date</th>
+                <th class="text-center">Delete Notification</th>
+                @{
+                    foreach (NotificationMaster nm in Model)
+                    {
+                    <tr>
+                        <td>@nm.Nid</td>
+                        <td>@nm.NMsg</td>
+                        <td>@nm.NDT</td>
+                        <td class="text-center">
+                            <span class="fa-solid fa-trash-can text-danger del" title="Remove"style="cursor:pointer"></span>
+                        </td>
+                    </tr>
+                }
+                }
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+
+

@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Common_General_Layout.cshtml";
+
+
+}
+@using TechProjectHub.Models
+@model IEnumerable<NotificationMaster>
+<script>
+    $(document).ready(function () {
+        $("#btn").click(function () {
+            var name, email, mobno, query;
+            name = $("#E_Name").val();
+            email = $("#E_Email").val();
+            mobno = $("#E_MobNo").val();
+            query = $("#E_Message").val();
+            var obj = { Name: name, EmailId: email, MobNo: mobno, Query: query };
+            $.getJSON("/General/SaveEnquiryByAJAX", obj, function (result) {
+                if (result == "SUCCESS") {
+                    alert("Query send successfully.");
+                    $("#btnclose").trigger("click");
+                     $("#E_Name").val("");
+                     $("#E_Email").val("");
+                     $("#E_MobNo").val("");
+                     $("#E_Message").val("");
+                }
+                else {
+                    alert("Sorry! unable to send query.");
+                }
+            });
+        });
+    });
+</script>
+<style>
+    .enquirysec {
+        min-height: 500px;
+        width: 40%;
+        background: #00B4CF;
+    }
+    .enquirytxt {
+        min-height: 500px;
+        width: 40%;
+    }
+    .enqhead {
+        margin-top: 30%;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight:bold;
+        font-size:30px;
+        color:#ffffff;
+    }
+    .enqtxt {
+        color: #ffffff;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .enqclick {
+        margin-top: 5%;
+        font-size: 25px;
+        color: #000000;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+</style>
+<div class="row">
+    <div class="col-sm-12 notification">
+        <marquee behavior="scroll" class=" mt-1" direction="left" onmouseover="stop()" onmouseout="start()" scrollamount="6">
+            <ul id="noti">
+                @{
+                        int n = 1;
+                        foreach (NotificationMaster nm in Model)
+                        {
+                        <i class="fa fa-circle text-danger"></i>
+                        <span style="font-size:18px;color:#00B4CF">@nm.NMsg
+                        @if (n == 1)
+                            {
+                                <img /> //we can add a gif image Here 
+                            n++;
+                        }
+                        </span>
+                       
+                        }
+                }
+            </ul>
+        </marquee>
+    </div>
+    <div class="row slider p-0 m-0">
+        <div class="col-sm-12 p-0">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="~/Content/Images/slider1.jpg" class="d-block w-100"  style="width:100%" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/Images/slider2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/Images/slider3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item active">
+                        <img src="~/Content/Images/slider4.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/Images/slider5.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="~/Content/Images/slider6.jpg" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 text-center heading">Tech Project Hub</div>
+    <div class="col-sm-4"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <h3 class="intro mt-5">Introduction</h3>
+        <p class="textcontent" >
+            Welcome to <b>Tech Project Hub</b>, your gateway to cutting-edge tech projects and a brighter future in the digital landscape.We are passionate about connecting talented professionals with innovative projects that challenge the status quo and drive technological advancements.
+        </p>
+        <p class="textcontent">
+            In an ever-evolving digital landscape, the heart of any tech-centric organization lies in its ability to harness the power of technology to drive innovation and efficiency. Welcome to our latest endeavor, a groundbreaking project in the realm of web development, poised to transform the way tech work companies operate and empower their employees.
+        </p>
+        <hr />
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+<div class="row mb-3">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5 mb-4 mt-4 p-3">
+        <img class="text-center introimg" src="~/Content/Images/intro.jpg" />
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4 mt-4">
+        <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #1237b1; ">Become a part....</h3>
+        <p class="textcontent">
+            Join us as we delve into a future where tech work companies and their employees unite through cutting-edge web development,
+            forging a new era of efficiency, satisfaction, and success. Together, we will revolutionize the tech work landscape and lead
+            the way in innovation and client service.
+        </p>
+        <p class="textcontent"><b>Employee-Centric:</b> Our platform is designed with our employees in mind. We prioritize your growth, creativity, and success within the company.</p>
+    </div>
+
+    <div class="col-sm-1"></div>
+</div>
+<div class="row mb-3">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5 enquirysec">
+                <h3 class="enqhead text-center">Let's Chat</h3>
+                <p class="enqtxt text-center mt-2">
+                    Whether you have a question, want to<br />start a project or simply want to connect.
+                </p>
+                <p class="enqtxt text-center">Feel free to send me a message or query in the <br /> enauiry form</p>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5 enquirytxt">
+                <p class="text-center enqclick p-5">Just hit on below<br /> <span style="color: #1237b1;font-size:30px">Enquiy</span> button <br />and ask anything</p>
+                <div class=" text-center Enquiry p-0 m-0">
+                    <button type="button" class="btn btn-outline-primary" style="min-width:30%;border-radius:10px" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="etbootstrap">Enquiry</button>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Enquiry Form</h5>
+                                    <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="recipient-name" class="col-form-label">Name<spna class="text-danger">*</spna></label>
+                                            <input type="text" name="Name" class="form-control" id="E_Name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Email" class="col-form-label">Email<spna class="text-danger">*</spna></label>
+                                            <input type="email" name="EmailId" class="form-control" id="E_Email">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="Mobile" class="col-form-label">Mobile No<spna class="text-danger">*</spna></label>
+                                            <input type="number" name="MobNo" class="form-control" id="E_MobNo">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="EnquiryMessage" class="col-form-label"><b>Query<spna class="text-danger">*</spna></b></label>
+                                            <textarea class="form-control" name="Query" id="E_Message"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="btnclose" class="btn btn-outline-primary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" id="btn" class="btn btn-primary">Send Query</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>

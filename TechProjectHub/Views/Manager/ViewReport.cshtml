@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "ViewReport";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+
+@using TechProjectHub.Models
+@model IEnumerable<WorkReportMaster>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-12 pt-5 pb-5 mt-5 mb-5 bg-light" style="border-radius:15px">
+        <h3 class="text-center text-primary mt-1 mb-1">Work Reports of Developer</h3>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Work Report Id</th>
+                <th>Work Report Title</th>
+                <th>Work Report Decsription</th>
+                <th>Work Date</th>
+                <th>Any Help Needed</th>
+                <th>Submitted By</th>
+                <th>Submitted Date</th>
+                @{
+                    foreach (WorkReportMaster wrm in Model)
+                    {
+                    <tr>
+                        <td>@wrm.Report_Id</td>
+                        <td>@wrm.Report_Title</td>
+                        <td>@wrm.Report_Descrip</td>
+                        <td>@wrm.WorkDate</td>
+                        <td>@wrm.IsHelpNeeded</td>
+                        <td>@wrm.DeveloperMaster.Email_Id</td>
+                        <td>@wrm.Submitted_DT</td>
+                    </tr>
+                }
+                }
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+

@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "ViewDeveloper";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+@using TechProjectHub.Models
+@model IEnumerable<DeveloperMaster>
+<div class="row">
+    <div class="col-sm-12 pt-5 pb-5 mt-5 mb-5 bg-light" style="border-radius:15px">
+        <h3 class="text-center text-primary mt-1">Request from Developers</h3>
+        <form action="/Manager/ViewDeveloper" method="post">
+            <div class="row">
+                <div class=col-sm-2> </div>
+                <div class=col-sm-6>
+                    <input type="text" name="SearchValue" class="form-control" placeholder="Type here to search...." />
+                </div>
+                <div class=col-sm-2>
+                    <input type="submit" value="Search" class="form-control btn btn-primary" />
+                </div>
+                <div class=col-sm-2> </div>
+
+            </div>
+
+        </form>
+        <h3 class="text-danger">@TempData["Message"]</h3>
+        <table class="table text-center table-striped table-responsive">
+            <tr>
+                <th>Name</th>
+                <th>Profile Pic</th>
+                <th>Email Id</th>
+                <th>Mobile No</th>
+                <th>Qualification</th>
+                <th>Gender</th>
+                <th>Address</th>
+                <th>Designation</th>
+                <th>Signup On</th>
+                <th>Delete</th>
+            </tr>
+            @{
+
+                foreach (DeveloperMaster sm in Model)
+                {
+                    string picname = "";
+                    if (sm.ProfilePic == string.Empty)
+                    {
+                        if (sm.Gender.ToUpper().Trim() == "MALE")
+                        {
+                            picname = "/Content/Images/Default_male.png";
+                        }
+                        else
+                        {
+                            picname = "/Content/Images/Default_female.png";
+                        }
+                    }
+                    else
+                    {
+                        picname = "/Content/UserPics/" + sm.ProfilePic;
+                    }
+                    <tr>
+                        <td>@sm.Name</td>
+                        <td class="text-center">
+                            <img src="@picname" width="80px" height="80px" style="border-radius:50%" /><br />
+                        </td>
+                        <td>@sm.Email_Id</td>
+                        <td>@sm.Mobile_No</td>
+                        <td>@sm.Qualification</td>
+                        <td>@sm.Gender</td>
+                        <td>@sm.Address</td>
+                        <td>@sm.Designation</td>
+                        <div>
+                        <td>@sm.Registered_On</td>
+                        <td>
+                            <a href="/Manager/RemoveDeveloper/?uid=@sm.Email_Id">
+                                <i class="del fa-solid fa-trash-can text-danger" style="cursor:pointer" title="Delete"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </table>
+    </div>
+
+</div>
+
+

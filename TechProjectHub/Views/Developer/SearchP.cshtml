@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "SearchP";
+    Layout = "~/Views/Shared/Common_Developer_Layout.cshtml";
+}
+@using TechProjectHub.Models
+@model IEnumerable<ProjectMaster>
+
+<div class="row">
+    <div class="col-sm-12 mb-4">
+        <h2 class="text-center text-black mt-4" style="font-family:sans-serif;font-weight:bold">Search Project</h2>
+        <p>@TempData["RqProject"]</p>
+        <form action="/Developer/SearchP" method="post">
+        <input type="hidden" name="Request_For" value="@Request["id"]" />
+            <div class="row">
+                <div class=col-sm-2> </div>
+                <div class=col-sm-6>
+                    <input type="text" name="SearchValue" class="form-control" placeholder="Type here to search...." />
+                </div>
+                <div class=col-sm-2>
+                    <input type="submit" value="Search" class="form-control btn btn-primary" />
+                </div>
+                <div class=col-sm-2> </div>
+            </div>
+
+        </form><br />
+        <h3 class="text-danger"></h3>
+        <table class="table text-center table-striped table-responsive">
+            <tr>
+                <th>Project Id</th>
+                <th>Project Title</th>
+                <th>Project Deadline</th>
+                <th>Project Description</th>
+                <th>Project File</th>
+                <th>Download File</th>
+                <th>Posted Date</th>
+                <th>Request for Project</th>
+            </tr>
+            @{
+
+                foreach(ProjectMaster pm in Model)
+                {
+                   
+                    <tr>
+                        <td>@pm.Project_Id</td>
+                        <td>@pm.Project_Title</td>
+                        <td>@pm.Deadline</td>
+                        <td>@pm.Description</td>
+                        <td>@pm.Project_File</td>
+                        <td>
+                            <a href="/Developer/DownloadProject/?fname=@pm.Project_File">
+                                <span><i class="fa-solid fa-download "></i>
+                                    </span>
+                            </a>
+                        </td>
+                        <td>@pm.Project_DT</td>
+                        <td>
+                            <a href="/Developer/RqForProject?id=@pm.Project_Id">Request</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+        </table>
+    </div>
+
+</div>
+

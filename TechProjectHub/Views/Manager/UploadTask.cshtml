@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "UploadTask";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 pt-3 mt-5 mb-5 pb-5 bg-light upsection">
+        <h3 class="text-success text-center mb-4">Upload Today Task</h3>
+        <h5 class="text-info text-center">@ViewBag.UploadTask</h5>
+        <form action="/Manager/UploadTask" method="post" enctype="multipart/form-data">
+            <label for="TaskTitle" class="col-form-label">Select Developer<spna class="text-danger">*</spna></label>
+          
+            @Html.DropDownList("ForDeveloper", null, "ForDeveloper", new {@class="form-control"})
+
+            <label for="TaskTitle" class="col-form-label">Task Title<spna class="text-danger">*</spna></label>
+            <input class="form-control mb-2" type="text" name="TaskTitle" placeholder="Title of Task"required />
+            <label for="TaskDate" class="col-form-label">Task Deadline<spna class="text-danger">*</spna></label>
+            <input class="form-control mb-2" type="date" name="ForDate" required/>
+            <label for="TaskDesc" class="col-form-label">Task Description<spna class="text-danger">*</spna></label>
+            <textarea class="form-control mb-2" name="TaskDescription" placeholder="Description of Task...."required></textarea>
+            <label for="TaskFile" class="col-form-label">Upload Task File<spna class="text-danger">*</spna></label>
+            <input type="file" class="form-control mb-3" name="TaskFile"required />
+            <input type="submit" value="Upload Task" class="btn btn-primary mt-3" />
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+

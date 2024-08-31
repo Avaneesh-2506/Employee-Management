@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Views/Shared/Common_Developer_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4 pt-3 mt-5 mb-5 pb-5 bg-light upsection">
+        <h3 class="text-success text-center mb-4">Feedback</h3>
+        <p class="text-success text-center">Please send your valuable Feedback</p>
+        <p class="text-center text-primary">@ViewBag.Message</p>
+        <form action="/Developer/Feedback" method="post">
+            <div class="mb-3">
+                <label for="Title/Topic" class="form-label">Title<spna class="text-danger">*</spna></label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" required placeholder="Titl/Topic of feedback" name="Feedback_Title">
+            </div>
+            <div class="mb-3">
+                <label for="FeedbackMessage" class="form-label">Feedback<spna class="text-danger">*</spna></label>
+                <textarea class="form-control" name="Feedback_Detail" rows="3" required placeholder="Type your feedback here....."></textarea>
+            </div>
+            <input type="submit" class="btn btn-success mt-2 mb-2" />
+        </form>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+

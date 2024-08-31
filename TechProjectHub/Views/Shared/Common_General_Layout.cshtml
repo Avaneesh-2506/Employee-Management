@@ -1,0 +1,135 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TechProjectHub</title>
+    <script src="~/Content/Bootstrap/js/bootstrap.min.js"></script>
+    <link href="~/Content/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="~/Content/JS/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <link href="~/Content/CSS/General_Style.css" rel="stylesheet" />
+    <style>
+        .nav-link {
+            color: #ffffff;
+        }
+
+            .nav-link:hover {
+                color: #ff6a00;
+            }
+    </style>
+</head>
+<body>
+
+        <div class="container-fluid">
+            <div class="row header">
+                <div class="col-sm-2 logo p-0 text-center" style="min-height:12%">
+                    <!--<img src="~/Content/Images/Project1.jpeg" height="70px" width="90px" />-->
+                    <img src="~/Content/Images/Project png.png" height="60px" width="50%" />
+
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-7 menu p-0">
+                    <!--Nav Start-->
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="container-fluid">
+
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                <ul class="navbar-nav navbar-danger">
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Home", "Index", "General", new { @class = "nav-link ", style = "color:white;" })
+                                    </li>
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("About Us", "Aboutus", "General", new { @class = "nav-link ", style = "color:white;" })
+                                    </li>
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Trending Projects", "TdProject", "General", new { @class = "nav-link ", style = "color:white;" })
+                                    </li>
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Developer Sign Up", "SignUp", "General", new { @class = "nav-link ", style = "color:white;" })
+                                    </li>
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Contact Us", "ContactUs", "General", new { @class = "nav-link ", style = "color:white;" })
+                                    </li>
+                                    <li class="nav-item">
+
+                                        @Html.ActionLink("Login", "login", "General", new { @class = "nav-link", style = "color:white;" })
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-sm-1"></div>
+                <!--Nav End-->
+            </div>
+            <div class="row main">
+                <div class="col-sm-12">
+                    @RenderBody()
+                </div>
+
+            </div>
+            <div class="row footer">
+                <div class="col-sm-4">
+                    <h3 class="pt-2 text-light">About</h3>
+                    <hr />
+                    <p class="text-light">Welcome to <b>Tech Project Hub</b>, where technology meets innovation to redefine the way we work, play, and connect with the world. We are a dynamic and forward-thinking tech work company committed to delivering cutting-edge solutions that empower individuals and businesses to thrive in the digital age.</p>
+                </div>
+                <div class="col-sm-4" >
+                    <h3 class="pt-2 text-light">Important Links</h3>
+                    <hr />
+                    <ul>
+                        <li><span>@Html.ActionLink("Home", "Index", "General", new { @class = "nav-link " }) </span></li>
+                        <li><span>@Html.ActionLink("About Us", "Aboutus", "General", new { @class = "nav-link " })</span></li>
+                        <li><span>@Html.ActionLink("Contacts", "ContactUs", "General", new { @class = "nav-link " })</span></li>
+                        <li><span>@Html.ActionLink("Trending Projects", "TdProject", "General", new { @class = "nav-link " })</span></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4 mb-3">
+                    <h3 class="pt-2 text-light">Contact Us</h3>
+                    <hr />
+                    <p>
+                        Tech Project Hub Pvt. Ltd<br />
+                        Balsan Chauraha Near Bank Road,<br />
+                        Prayagraj, Uttar Pradesh
+                    </p>
+                    <p>Social Media Link</p>
+                    <span class="mb-3">
+                        <a class="text-light" id="ic1" target="_blank" href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-xl" style="color: #ffffff;"></i></a>&nbsp;
+                        <a class="text-light" id="ic2" target="_blank" href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i></a>&nbsp;
+                        <a class="text-light" id="ic3" target="_blank" href="https://twitter.com/"><i class="fa-brands fa-twitter fa-xl" style="color: #ffffff;"></i></a>&nbsp;
+                        <a class="text-light" id="ic4" target="_blank" href="https://linkedin.com/"><i class="fa-brands fa-linkedin fa-xl" style="color: #ffffff;"></i></a>
+                    </span>
+                    <br />
+                    <div></div>
+                    <div>
+                    </div>
+                </div>
+                <div class="row last-footer p-2 m-0 text-center">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        Copyright &copy; TechProjectHub.com
+                    </div>
+                    <div class="col-sm-5">
+                        Design & Developed by : Team <a href="/General/MyIntro" style="text-decoration:none;color:#053d8a">Tech Project Hub</a>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </div>
+           </div>
+      </body>
+</html>

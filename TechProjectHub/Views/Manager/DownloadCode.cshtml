@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "DownloadCode";
+    Layout = "~/Views/Shared/Common_Manager_Layout.cshtml";
+}
+@using TechProjectHub.Models
+@model IEnumerable<UploadCodeMaster>
+
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 pt-5 pb-5 mt-5 mb-5 bg-light" style="border-radius:15px">
+        <h3 class="text-center text-primary">Download Code</h3>
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Upload Id</th>
+                <th>Upload Title</th>
+                <th>Code Description</th>
+                <th>Uploaded By</th>
+                <th>File Name</th>
+                <th>Uploaded On</th>
+                <th class="text-center">Download</th>
+                @{
+                    foreach (UploadCodeMaster um in Model)
+                    {
+                    <tr>
+                        <td>@um.Upload_Id</td>
+                        <td>@um.Upload_Title</td>
+                        <td>@um.Code_Descrip</td>
+                        <td>@um.Uploaded_By</td>
+                        <td>@um.CodeFile_Name</td>
+                        <td>@um.Uploaded_DT</td>
+                        <td>
+                            <a href="/Manager/Download/?fname=@um.CodeFile_Name">
+                                <span><i class="fa fa-file fa-download"></i></span>>
+                            </a>
+                        </td>
+                    </tr>
+                }
+                }
+                </tr>
+            </table>
+        </div>
+    <div class="col-sm-1"></div>
+</div>
+

@@ -1,0 +1,180 @@
+﻿.navbar {
+    
+    color: #009688;
+}
+.notification{
+    font-size:20px;
+    height:40px;
+}
+.header {
+    background: linear-gradient(247deg, #9b59b6, #71b7e6);
+    border-bottom:2px solid white;
+}
+/*.logo {
+    background: #009688;
+}*/
+.nav-item{
+    font-size:22px;
+    font-family:'Sitka Banner';
+    color:brown;
+    padding:0px;
+    letter-spacing:1.5px;
+}
+.aboutus {
+    font-size:35px;
+    font-family:Candara;
+
+}
+.card1{
+    box-shadow:4px 5px 8px #4bb6f5;
+}
+.card2{
+    box-shadow:-4px 5px 8px #4bb6f5;
+}
+
+/*.aboutus::after {
+      
+    content: '';
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #1896d2;
+    bottom: 0;
+    left: calc(20% - 20px);
+}*/
+.aboutC{
+    font-size:20px;
+}
+.main {
+    min-height: 500px;
+    /*background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);*/
+}
+
+
+.footer {
+    background: #232323;
+    text-align: justify;
+    color:white;
+    font-size:15px;
+}
+.last-footer{
+    background:black;
+    color:white
+}
+.heading {
+    color:#313131;
+    font-size: 40px;
+    font-family:'Imprint MT Shadow';
+    border-bottom: 6px solid black;
+    margin-top: 10px;
+    border-radius: 10px;
+    letter-spacing:4px;
+    filter:drop-shadow(5px 7px 10px black);
+}
+.heading1 {
+    position:relative;
+    color: black;
+    font-size: 40px;
+    font-family: 'Californian FB';
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+    .heading2 {
+    color:#ffffff;
+    font-size: 40px;
+    font-family:'Imprint MT Shadow';
+    border-bottom: 6px solid #ffffff;
+    margin-top: 10px;
+    border-radius: 10px;
+    letter-spacing:4px;
+    box-shadow:0 0 0 black;
+}
+    .logac{
+        color:#268cfb;
+        font-size:30px;
+        font-family:'Arial Rounded MT';
+        margin-bottom:5px;
+    }
+
+.intro{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:35px;
+    color:#1237b1;
+}
+.textcontent {
+    font-family: 'Arial Rounded';
+    font-size: 22px;
+    text-align: justify;
+    letter-spacing:1px;
+}
+.myform{
+    margin-bottom:15px;
+    margin-top:15px;
+    border-radius:20px;
+}
+.login {
+    padding: 10px;
+    margin-top:30px;
+    min-height: 450px;
+    background: #ffffff35;
+    border-radius: 15px;
+}
+
+.greet {
+    background: #5653CC;
+    min-height:500px;
+}
+/*.txt {
+    margin-top: 0px;
+    min-width: 100%;
+}*/
+
+.txt1 {
+    background:transparent;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Century;
+    margin-bottom:10px;
+    letter-spacing: 5px;
+    transition: 0.2s all ease-in-out;
+
+}
+    .txt1:hover {
+        background: #536ffb;
+        color: white;   
+    }
+    #txt2:hover {
+        background:#dc2020;
+        color: white;   
+    }
+
+.address{
+
+    background:#ffffffd7;
+    border-radius:15px;
+    min-height:200px;
+    padding:2px;
+}
+.CU{
+    font-size:25px;
+}
+.contactbg{
+    background:url('/Content/Images/contactbg1.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+
+}
+
+
+.introimg {
+    min-height:50%;
+    width:100%;
+    border-radius:10px;
+    margin-top:10px;
+    box-shadow:5px 7px 10px;
+}
